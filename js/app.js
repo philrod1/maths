@@ -36,8 +36,8 @@ function checkAnswer() {
         }
         var key = e.which;
         console.log(key);
-        if (key === 8 || key === 46 || key === 109 || key === 173
-            || (key > 48 && key < 59) || (key > 95 && key < 106)) {
+        if (key === 8 || key === 46 || key === 109 || key === 173 || key === 189
+            || (key > 47 && key < 59) || (key > 95 && key < 106)) {
             return true;
         } else if (key === 13) {
             var operator = document.getElementById("operator").innerText;
