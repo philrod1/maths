@@ -1,0 +1,61 @@
+body {font-family: 'Roboto', sans-serif;}
+
+.container {
+    display: flex;
+    font-size: 10em;
+}
+
+.box {
+    /*border: 1px solid black;*/
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -0.5em;
+    margin-left: -2.5em;
+}
+
+.item.op {
+    padding-left: 10px;
+}
+
+.image {
+    display: none;
+}
+
+.image img {
+    height: 1em;
+}
+
+input.result {
+    font-family: 'Roboto', sans-serif;
+    height: 0.9em;
+    font-size: 1em;
+    width: 1.5em;
+    border: 0;
+    margin-top: -7px;
+    /*display: none;*/
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+:focus {
+    /*background-color: yellow;*/
+}
+
+#score {
+    top:0;
+    float: right;
+    font-size: 5em;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Maths</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div id="score">0</div>
+<div class="container">
+    <div class="item box">
+        <div id="operand1" class="item op operand"></div>
+        <div id="operator" class="item op operator"></div>
+        <div id="operand2" class="item op operand"></div>
+        <div class="item op equals">=</div>
+        <div id="answer-div" class="item op">
+            <input onkeypress="checkAnswer()"  id="answer" type="text" class="result" />
+        </div>
+        <div id="tick" class="item image">
+            <img src="img/tick.png"/>
+        </div>
+        <div id="cross" class="item image">
+            <img src="img/cross.png"/>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script>
+    document.getElementById("answer").focus();
+    // $(document).ready(function() {
+        // $("#answer").focus();
+        initStuff();
+    // });
+</script>
+</body>
+</html>
