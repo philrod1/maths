@@ -24,7 +24,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="item box">
         <div id="formula" class="item"></div>
         <div id="answer-div" class="item op">
-            <input onkeypress="checkAnswer()"  id="answer" type="text" class="result" />
+            <input onkeypress="checkAnswer()"  id="answer" type="number" class="result" />
         </div>
         <div id="tick" class="item image">
             <img src="img/tick.png"/>
