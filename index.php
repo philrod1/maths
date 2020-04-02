@@ -16,7 +16,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<div class="top-left"><?php echo htmlspecialchars($_SESSION["username"]); ?></div>
+<div class="top-left"><?php echo htmlspecialchars($_SESSION["display_name"]); ?></div>
 <div class="top-right">
     Score: <div id="score"></div>
 </div>
