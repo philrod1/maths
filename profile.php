@@ -32,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $param_id) {
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/all.css">
 </head>
 <body>
 <div class="container">
@@ -45,10 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $param_id) {
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group">
             <label>Display Name</label>
-            <input id="display-name" type="text" name="display_name" class="form-control inline" value="<?php echo htmlspecialchars($display_name); ?>">
-            <span onclick="saveName(document.getElementById('display-name').value)" class="btn btn-small btn-danger">
-                <i class="fas fa-save"></i>
-            </span>
+            <input onchange="saveName(document.getElementById('display-name').value)" id="display-name" type="text" name="display_name" class="form-control" value="<?php echo htmlspecialchars($display_name); ?>">
         </div>
     </form>
     <form name="bgf" class="form-group">
