@@ -1,8 +1,18 @@
+html {
+    background: url('../img/minecraft.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    height: 100%;
     margin: 0;
     font-family: 'Roboto', sans-serif;
     display: none;
-    animation: fadeInAnimation ease 3s;
+    animation: fadeInAnimation ease 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     font-size: 1vw;
@@ -22,6 +32,20 @@ body {
     font-size: 10em;
 }
 
+.wrapper {
+    flex-direction: column;
+    display: flex;
+    width: 300px;
+    padding: 20px;
+    font-size: 18px;
+    top: 50%;
+    left: 50%;
+    margin-top: -15em;
+    margin-left: -8.4em;
+    position: absolute;
+    border: 1px solid rgba(0,0,0,0.5);
+}
+
 .box {
     /*border: 1px solid black;*/
     display: flex;
@@ -33,8 +57,10 @@ body {
     margin-left: -2.5em;
 }
 
-.item.op {
+.item {
     padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
 }
 
 .image {
@@ -71,28 +97,49 @@ input[type=number] {
     /*background-color: yellow;*/
 }
 
+.head {
+    top: 0;
+    width: 100%;
+    display: flex;
+}
+
 .top-right {
-    top:0;
-    float: right;
+    margin-left: auto;
     font-size: 5em;
     padding: 8px;
 }
 
 .top-left {
-    top: 0;
-    float: left;
     font-size: 5em;
     padding: 8px;
 }
 
 .footer {
-    padding: 8px;
+    padding: 8px 8px 0px 8px;
     position: absolute;
-    bottom: 28px;
+    bottom: 0;
     width: 100%;
-    height: 2.5rem;            /* Footer height */
 }
 
 #score {
     display: inline-block;
+}
+
+.username:hover {
+    cursor: pointer;
+}
+
+.misty {
+    background-color: rgba(255,255,255,0.6);
+}
+
+.profile-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+input.inline {
+    display: inline-block;
+    width: 80%;
+    padding-right: 10px;
 }

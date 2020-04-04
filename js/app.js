@@ -38,6 +38,32 @@ function initStuff() {
     document.getElementById("answer").value = "";
 }
 
+function saveBackground() {
+    var sel = document.getElementById('bg-select');
+    var index = parseInt(sel.value);
+    setBackground(index);
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "php/save_background.php?img=" + index, true);
+    xmlhttp.send();
+}
+
+function setBackground(index) {
+    switch (index) {
+        case 1:
+            document.getElementsByTagName("HTML")[0].style.backgroundImage = "url('img/autumn.jpg')";
+            break;
+        case 2:
+            document.getElementsByTagName("HTML")[0].style.backgroundImage = "url('img/minecraft.jpg')";
+            break;
+        case 3:
+            document.getElementsByTagName("HTML")[0].style.backgroundImage = "url('img/sunrise.jpg')";
+            break;
+        default:
+            document.getElementsByTagName("HTML")[0].style.backgroundImage = 'none';
+    }
+
+}
+
 function checkAnswer() {
     if (blockInput) {
         return;
@@ -95,6 +121,12 @@ function checkAnswer() {
         }
         return true;
     }
+}
+
+function saveName(displayName) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "php/save_name.php?name=" + displayName, true);
+    xmlhttp.send();
 }
 
 

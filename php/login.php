@@ -14,6 +14,8 @@ require_once "config.php";
 // Define variables and initialize with empty values
 $username = $password = $display_name = "";
 $username_err = $password_err = "";
+$background_image = 0;
+$_SESSION["background_image"] = 0;
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -35,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, username, password, display_name FROM users WHERE username = ?";
+        $sql = "SELECT id, username, password, display_name, background FROM users WHERE username = ?";
 
         if($stmt = $mysqli->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -52,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if username exists, if yes then verify password
                 if($stmt->num_rows == 1){
                     // Bind result variables
-                    $stmt->bind_result($id, $username, $hashed_password, $display_name);
+                    $stmt->bind_result($id, $username, $hashed_password, $display_name, $background_image);
                     if($stmt->fetch()){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
@@ -63,6 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
                             $_SESSION["display_name"] = ($display_name) ? $display_name : $username;
+                            $_SESSION["background_image"] = ($background_image) ? $background_image : 0;
 
                             // Redirect user to welcome page
                             header("location: ../index.php");
@@ -92,16 +95,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../js/app.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper misty">
     <h2>Login</h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
@@ -120,5 +123,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <p>Don't have an account? <a href="register.php">MAKE ONE</a>!</p>
     </form>
 </div>
+<script>
+    setBackground(<?php echo $_SESSION["background_image"]; ?>);
+    document.getElementsByTagName("BODY")[0].style.display = 'block';
+</script>
 </body>
 </html>

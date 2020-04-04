@@ -97,16 +97,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper misty">
     <h2>Sign Up</h2>
     <p>Please fill this form to create an account.</p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -136,5 +135,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <p>Already have an account? <a href="login.php">Login here</a>.</p>
     </form>
 </div>
+<script>
+    document.getElementsByTagName("BODY")[0].style.display = 'block';
+</script>
 </body>
 </html>

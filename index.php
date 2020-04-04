@@ -11,14 +11,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <title>Maths</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/app.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/all.css">
 </head>
 <body>
-<div class="top-left"><?php echo htmlspecialchars($_SESSION["display_name"]); ?></div>
-<div class="top-right">
-    Score: <div id="score"></div>
+<div class="head misty">
+    <div class="top-left username" onclick="window.location='profile.php';"><?php echo htmlspecialchars($_SESSION["display_name"]); ?></div>
+    <div class="top-right">
+        Score: <div id="score"></div>
+    </div>
 </div>
 <div class="container">
     <div class="item box">
@@ -34,13 +38,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div>
     </div>
 </div>
-<div class="footer">
+<div class="footer misty">
     <p>
         <a href="php/logout.php" class="btn btn-default">Sign Out</a>
+        <a href="profile.php" class="btn btn-default pull-right">Profile</a>
     </p>
 </div>
-<script type="text/javascript" src="js/app.js"></script>
 <script>
+    setBackground(<?php echo htmlspecialchars($_SESSION["background_image"]); ?>)
     document.getElementById("answer").focus();
     initStuff();
 </script>
