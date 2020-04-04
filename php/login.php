@@ -98,7 +98,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="../js/app.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/main.css">
@@ -120,11 +119,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Login">
         </div>
-        <p>Don't have an account? <a href="register.php">MAKE ONE</a>!</p>
+        <p>Need an account? <a href="register.php">MAKE ONE!</a></p>
     </form>
 </div>
 <script>
-    setBackground(<?php echo $_SESSION["background_image"]; ?>);
     document.getElementsByTagName("BODY")[0].style.display = 'block';
 </script>
 </body>
