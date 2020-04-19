@@ -58,6 +58,12 @@ function setBackground(index) {
         case 3:
             document.getElementsByTagName("HTML")[0].style.backgroundImage = "url('img/sunrise.jpg')";
             break;
+        case 4:
+            document.getElementsByTagName("HTML")[0].style.backgroundImage = "url('img/roblox.jpg')";
+            break;
+        case 5:
+            document.getElementsByTagName("HTML")[0].style.backgroundImage = "url('img/bee_swarm.jpg')";
+            break;
         default:
             document.getElementsByTagName("HTML")[0].style.backgroundImage = 'none';
     }

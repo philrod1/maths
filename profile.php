@@ -54,6 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $param_id) {
             <option value="1">Autumn</option>
             <option value="2">Minecraft</option>
             <option value="3">Sunrise</option>
+            <option value="4">Roblox</option>
+            <option value="5">Bee Swarm</option>
         </select>
     </form>
     <a class="btn bg-success" href="index.php">Back to the maths!</a>
