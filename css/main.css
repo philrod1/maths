@@ -52,9 +52,9 @@ body {
     flex-direction: row;
     position: absolute;
     top: 50%;
-    left: 50%;
+    /* left: 50%; */
     margin-top: -0.5em;
-    margin-left: -2.5em;
+    /* margin-left: -2.5em; */
 }
 
 .item {
@@ -75,7 +75,7 @@ input.result {
     font-family: 'Roboto', sans-serif;
     height: 0.9em;
     font-size: 1em;
-    width: 1.5em;
+    width: 2em;
     border: 0;
     margin-top: -7px;
     /*display: none;*/

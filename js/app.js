@@ -1,8 +1,8 @@
 var blockInput = true;
 
 var score = 0;
+var x, y, z;
 var op1, op2;
-var op;
 
 function initStuff() {
     blockInput = true;
@@ -19,22 +19,28 @@ function initStuff() {
     xmlhttp.open("GET", "php/get_score.php", true);
     xmlhttp.send();
     var operators = ['+', '-', '×', '÷'];
-    op = Math.floor(Math.random() * 4);
 
-    if (op > 1) {
-        op1 = Math.floor(Math.random() * 9) + 1;
-        op2 = Math.floor(Math.random() * 9) + 1;
-        if (op === 3) {
-            op1 = op1 * op2;
-        }
-    } else {
-        op1 = Math.floor(Math.random() * 19) + 1;
-        op2 = Math.floor(Math.random() * 19) + 1;
+    while (true) {
+        op1 = Math.floor(Math.random() * 4);
+        op2 = Math.floor(Math.random() * 4);
+        x = Math.floor(Math.random() * 19) + 1;
+        y = Math.floor(Math.random() * 19) + 1;
+        z = Math.floor(Math.random() * 19) + 1;
+        if (checkResult(op1, op2, x, y, z)) break;
+    }
+    
+
+    if (op1 === 3) {
+        x = x * y;
+    }
+
+    if (op2 === 3) {
+        y = y * z;
     }
 
     document.getElementById("cross").style.display = 'none';
     document.getElementById("tick").style.display = 'none';
-    document.getElementById("formula").innerText = op1 + operators[op] + op2 + "=";
+    document.getElementById("formula").innerText = x + operators[op1] + y + operators[op2] + z + "=";
     document.getElementById("answer").value = "";
 }
 
@@ -86,21 +92,7 @@ function checkAnswer() {
             return true;
         } else if (key === 13) {
             var answer = parseInt(document.getElementById("answer").value);
-            var result;
-            switch (op) {
-                case 0:
-                    result = op1 + op2;
-                    break;
-                case 1:
-                    result = op1 - op2;
-                    break;
-                case 2:
-                    result = op1 * op2;
-                    break;
-                case 3:
-                    result = op1 / op2;
-                    break;
-            }
+            var result = calculateFullResult(op1, op2, x, y, z);
             if (answer === result) {
                 blockInput = true;
                 score++;
@@ -127,6 +119,31 @@ function checkAnswer() {
         }
         return true;
     }
+}
+
+function checkResult(op1, op2, x, y, z) {
+    if (!Number.isInteger(calculateResult(op1, x, y))) return false;
+    if (!Number.isInteger(calculateResult(op2, y, z))) return false;
+    if (!Number.isInteger(calculateFullResult(op1, op2, x, y, z))) return false;
+    return true;
+}
+
+function calculateFullResult(op1, op2, x, y, z) {
+    if (op2 > 1 && op1 < 2) {
+        return calculateResult(op1, x, calculateResult(op2, y, z));
+    } else {
+        return calculateResult(op2, calculateResult(op1, x, y), z);
+    }
+}
+
+function calculateResult(operator, x, y) {
+    const ops = [
+        (x, y) => x + y,
+        (x, y) => x - y,
+        (x, y) => x * y,
+        (x, y) => x / y
+    ]
+    return ops[operator](x,y);
 }
 
 function saveName(displayName) {
