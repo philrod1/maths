@@ -1,5 +1,5 @@
 <?php
-define('DB_SERVER', 'localhost');
+define('DB_SERVER', '127.0.0.1');
 define('DB_USERNAME', 'school');
 define('DB_PASSWORD', 'fake-password');
 define('DB_NAME', 'school');
